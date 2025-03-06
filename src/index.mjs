@@ -15,7 +15,7 @@ const app = express();
             app.use(express.json())
             app.use(cookieParser()) 
             app.use(cors({
-                origin: 'https://orientalserverside.onrender.com', // Replace with your frontend's domain
+                origin: 'http://http://localhost:3000', // Replace with your frontend's domain
                 credentials: true, // Allow cookies
               }));
             app.use(usersrouter)
