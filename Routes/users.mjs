@@ -23,7 +23,7 @@ function ensureAuthenticated(req, res, next) {
     
         router.use(session({
             secret : "codenamepizza",
-            saveUninitialized : false,
+            saveUninitialized : true,
             resave : false,
             cookie : {
                 maxage : 60000*60
