@@ -18,6 +18,8 @@ const app = express();
                 origin: ['https://www.orientalparfum.shop','http://localhost:3000','https://www.orientalparfum.shop/U2FsdGVkX18gWp8/iSKiyhKPB5FWr0dLigHLVCCzwow='],// Replace with your frontend's domain
                  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
                 credentials: true, // Allow cookies
+                    secure: process.env.NODE_ENV === "production", // true only in production
+                 sameSite: process.env.NODE_ENV === "production" ? "none" : "lax"
               }));
             app.use(usersrouter)
             
