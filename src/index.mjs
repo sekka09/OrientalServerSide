@@ -19,7 +19,7 @@ const app = express();
                  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
                 credentials: true, // Allow cookies
                     secure: process.env.NODE_ENV === "production", // true only in production
-                 sameSite: process.env.NODE_ENV === "production" ? "none" : "lax"
+                 sameSite: "none"
               }));
             app.use(usersrouter)
             
