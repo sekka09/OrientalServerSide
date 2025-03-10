@@ -23,23 +23,7 @@ const router = Router()
                 done(err);
               }
             });
-          passport.use('user-local',new Strategy ({
-            usernameField: 'name',
-            passwordField: 'password'
-        },async (name,password,done)=>{
-                            try {
-                                 let user =  await User.findOne({"name" : name})
-                                  if (!user){throw new Error("user not found")}
-                               else if (comparePassword(password,user.password)) { done(null,user)} 
-                               else  throw new Error ("false credentials")
-                                
-                                
-                            }
-                            catch(err) {
-                                done(err,null)
-                    
-                            }
-                      }))
+         
 
 
 
