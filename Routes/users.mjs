@@ -29,8 +29,7 @@ function ensureAuthenticated(req, res, next) {
             secret : "codenamepizza",
             saveUninitialized : false,
             resave : false,
-            cookie : { secure : true ,httpOnly : true,
-        sameSite: 'none', // Important for cross-origin requests
+            cookie : { secure : true , // Important for cross-origin requests
                 maxage : 60000*60},
             store : MongoStore.create({mongoUrl : uri})
         }))
