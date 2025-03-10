@@ -34,26 +34,7 @@ function ensureAuthenticated(req, res, next) {
         }))
         router.use(passport.initialize())
         router.use(passport.session())
-        router.post('/api/register',async (request,response)=>{
-            const {body}= request;
-            body.password = hashpassword(body.password);
-           try{
-            const newUser = new User(body);
-            await newUser.save();
-            response.sendStatus(200) }
-            
-             catch (err){
-                response.status(400).send(err);
-             }});  
-        router.post('/api/login',passport.authenticate('user-local'),(request,response)=>{ response.sendStatus(200) })
-        router.post('/api/logout',(request,response)=>{ request.logOut((err)=>{if (err)response.sendStatus(400)
-            response.sendStatus(200)
-        }) })
-        router.get('/api/authcheck',(request,response)=>{ request.user ?response.sendStatus(200): response.status(400).send("not connected")})
-        router.get('/api/user',ensureAuthenticated,async (request,response)=>{ 
-             const user = await User.findOne({_id : new ObjectId(request.user.id)})
-             response.status(200).send(user)
-            })
+       
         router.post('/api/cart',ensureAuthenticated,async(request,response)=>{
            
                 const  {id,quantity,size}= request.body;
