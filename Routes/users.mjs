@@ -30,7 +30,8 @@ function ensureAuthenticated(req, res, next) {
             saveUninitialized : false,
             resave : false,
             cookie : {  httpOnly: true,  // true only if HTTPS
-        sameSite: 'none' ,  // Important for cross-origin requests
+        sameSite: 'none' , secure : true , Partitioned : true,
+                      // Important for cross-origin requests
                 maxage : 60000*60},
             store : MongoStore.create({mongoUrl : uri})
         }))
