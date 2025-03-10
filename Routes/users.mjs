@@ -25,7 +25,9 @@ function ensureAuthenticated(req, res, next) {
             secret : "codenamepizza",
             saveUninitialized : false,
             resave : false,
-            cookie : {
+            cookie : {  httpOnly: true,
+        secure: false, // Change to true if you're using HTTPS (e.g., on deployment)
+        sameSite: 'none', // Important for cross-origin requests
                 maxage : 60000*60},
             store : MongoStore.create({mongoUrl : "mongodb+srv://sekka09:faresabdellah1234@cluster0.gc7g8.mongodb.net/FragranceStore?retryWrites=true&w=majority&appName=Cluster0"})
         }))
