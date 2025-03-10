@@ -26,7 +26,7 @@ function ensureAuthenticated(req, res, next) {
             saveUninitialized : false,
             resave : false,
             cookie : {
-                maxage : 60000*60,
+                maxage : 60000*60}
             store : MongoStore.create({mongoUrl : "mongodb+srv://sekka09:faresabdellah1234@cluster0.gc7g8.mongodb.net/FragranceStore?retryWrites=true&w=majority&appName=Cluster0"})
         }))
         router.use(passport.initialize())
