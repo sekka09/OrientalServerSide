@@ -23,12 +23,12 @@ function ensureAuthenticated(req, res, next) {
     
         router.use(session({
             secret : "codenamepizza",
-            saveUninitialized : true,
+            saveUninitialized : false,
             resave : false,
             cookie : {
                 maxage : 60000*60,
                 secure:true, // true only in production
-                 sameSite: "none"
+                httpOnly: true
             },
             store : MongoStore.create({mongoUrl : "mongodb+srv://sekka09:faresabdellah1234@cluster0.gc7g8.mongodb.net/FragranceStore?retryWrites=true&w=majority&appName=Cluster0"})
         }))
