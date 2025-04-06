@@ -15,7 +15,7 @@ const app = express();
             app.use(express.json())
             app.use(cookieParser()) 
             app.use(cors({
-                origin: ['https://www.orientalparfum.shop','https://www.orientalparfum.shop/U2FsdGVkX18gWp8/iSKiyhKPB5FWr0dLigHLVCCzwow='],// Replace with your frontend's domain
+                origin: ['https://www.orientalparfum.shop','https://www.orientalparfum.shop/U2FsdGVkX18gWp8/iSKiyhKPB5FWr0dLigHLVCCzwow=','http://localhost:3000','http://localhost:3000/U2FsdGVkX18gWp8/iSKiyhKPB5FWr0dLigHLVCCzwow='],// Replace with your frontend's domain
                  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
                 credentials: true, // Allow cookies
               }));
