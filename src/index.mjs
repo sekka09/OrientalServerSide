@@ -20,6 +20,7 @@ const app = express();
                       allowedHeaders: ['Content-Type', 'Authorization'],
                 credentials: true, // Allow cookies
               }));
+                app.options('*', cors());
             app.use(usersrouter)
             
 
