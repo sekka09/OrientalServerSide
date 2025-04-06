@@ -30,8 +30,7 @@ function ensureAuthenticated(req, res, next) {
             saveUninitialized : false,
             resave : false,
             cookie : {
-                 httpOnly: true,        // Prevents client-side JavaScript from accessing the cookie
-    secure: true,           // Ensures cookies are only sent over HTTPS
+                
     sameSite: 'none',       // Allows cross-site cookie usage (required for different domains)
     maxAge: 24 * 60 * 60 * 1000 * 2 // 2 days (adjust as needed)
             },
