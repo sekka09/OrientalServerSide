@@ -34,7 +34,7 @@ function ensureAuthenticated(req, res, next) {
     maxAge: 24 * 60 * 60 * 1000 * 2 // 2 days (adjust as needed)
     
             },
-            store : MongoStore.create({mongoUrl : uri})));
+            store : MongoStore.create({mongoUrl : uri})}));
 
         router.use(passport.initialize())
         router.use(passport.session())
