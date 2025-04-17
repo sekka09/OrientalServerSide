@@ -30,12 +30,22 @@ function ensureAuthenticated(req, res, next) {
             saveUninitialized : false,
             resave : false,
             cookie : {
-                
-    sameSite: 'none',       // Allows cross-site cookie usage (required for different domains)
-    maxAge: 24 * 60 * 60 * 1000 * 2 // 2 days (adjust as needed)
+                 secure: true, // Set to true in production with HTTPS
+        httpOnly: true,
+        sameSite: 'lax',
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
+        path: '/'
+    
             },
             store : MongoStore.create({mongoUrl : uri})
         }))
+router.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', process.env.FRONTEND_URL || 'http://localhost:3000');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
         router.use(passport.initialize())
         router.use(passport.session())
        
