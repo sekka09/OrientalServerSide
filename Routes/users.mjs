@@ -30,11 +30,8 @@ function ensureAuthenticated(req, res, next) {
             saveUninitialized : false,
             resave : false,
             cookie : {
-                 secure: true, // Set to true in production with HTTPS
-        httpOnly: true,
-        sameSite: 'lax',
-        maxAge: 24 * 60 * 60 * 1000, // 1 day
-        path: '/'
+               sameSite: 'none',       // Allows cross-site cookie usage (required for different domains)
+    maxAge: 24 * 60 * 60 * 1000 * 2 // 2 days (adjust as needed)
     
             },
             store : MongoStore.create({mongoUrl : uri})
